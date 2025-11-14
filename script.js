@@ -15,12 +15,15 @@ function addTask(text) {
     saveTasks();
 }
 
-
 function render() {
     taskList.innerHTML = "";
-    tasks.forEach(function(task) {
+    tasks.forEach(function(task, index) {
         const li = document.createElement("li");
         li.textContent = task.text;
+        li.addEventListener("click", function(){
+            const liIndex = li.dataset.index;
+            toggleTask(liIndex);
+        })
         if (task.completed) {
             li.classList.add("completed");
         }
@@ -28,6 +31,12 @@ function render() {
         deleteBtn.textContent = "X";
         li.appendChild(deleteBtn);
         taskList.appendChild(li);
+        li.dataset.index = index;
+        deleteBtn.addEventListener("click", function(event){
+            const delIndex = li.dataset.index;
+            deleteTask(delIndex);
+            event.stopPropagation();
+        })
     })
 }
 
@@ -44,7 +53,7 @@ function toggleTask(index) {
 }
 
 function deleteTask(index) {
-
+tasks.splice(index, 1);
 }
 
 taskForm.addEventListener("submit", handleSubmit);
