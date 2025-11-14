@@ -12,11 +12,23 @@ function addTask(text) {
     }
     tasks.push(taskObj);
     render();
+    saveTasks();
 }
 
 
 function render() {
-
+    taskList.innerHTML = "";
+    tasks.forEach(function(task) {
+        const li = document.createElement("li");
+        li.textContent = task.text;
+        if (task.completed) {
+            li.classList.add("completed");
+        }
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        li.appendChild(deleteBtn);
+        taskList.appendChild(li);
+    })
 }
 
 function saveTasks() {
