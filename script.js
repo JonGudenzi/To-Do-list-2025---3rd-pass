@@ -41,19 +41,29 @@ function render() {
 }
 
 function saveTasks() {
-
+const storeTask = JSON.stringify(tasks);
+localStorage.setItem("tasks", storeTask);
 }
 
 function loadTasks() {
-
+    const getTasks = localStorage.getItem("tasks");
+    if (getTasks) {
+        const parsedTasks = JSON.parse(getTasks);
+        tasks = parsedTasks;
+        render();
+    }
 }
 
 function toggleTask(index) {
-
+tasks[index].completed = !tasks[index].completed;
+render();
+saveTasks();
 }
 
 function deleteTask(index) {
 tasks.splice(index, 1);
+render();
+saveTasks();
 }
 
 taskForm.addEventListener("submit", handleSubmit);
@@ -70,3 +80,5 @@ function handleSubmit(event) {
     taskInput.value = "";
     taskInput.focus();
 }
+
+loadTasks();
