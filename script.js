@@ -20,6 +20,7 @@ function render() {
     tasks.forEach(function(task, index) {
         const li = document.createElement("li");
         li.textContent = task.text;
+        li.dataset.index = index;
         li.addEventListener("click", function(){
             const liIndex = li.dataset.index;
             toggleTask(liIndex);
@@ -31,7 +32,7 @@ function render() {
         deleteBtn.textContent = "X";
         li.appendChild(deleteBtn);
         taskList.appendChild(li);
-        li.dataset.index = index;
+        
         deleteBtn.addEventListener("click", function(event){
             const delIndex = li.dataset.index;
             deleteTask(delIndex);
