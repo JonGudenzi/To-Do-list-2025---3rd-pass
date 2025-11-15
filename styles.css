@@ -1,0 +1,104 @@
+/* --- Layout / Dark mode --- */
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #f5f5f5;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;   /* form on top, list underneath */
+    align-items: center;
+}
+
+/* Optional: a container so it doesn’t stretch full width */
+.app {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* --- Form --- */
+#taskForm {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+#inputTask {
+    padding: 8px;
+    font-size: 15px;
+    flex: 1;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background: #1e1e1e;
+    color: #f5f5f5;
+}
+
+#inputTask::placeholder {
+    color: #888;
+}
+
+#submitBtn {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    background: #3b82f6;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#submitBtn:hover {
+    background: #2563eb;
+}
+
+/* Error text */
+#errorMsg {
+    color: #f97373;
+    font-size: 13px;
+    margin: 4px 0 8px;
+}
+
+/* --- Task list --- */
+#taskList {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#taskList li {
+    list-style: none;
+    background: #1e1e1e;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+
+/* completed tasks */
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* --- Delete button --- */
+#taskList button {
+    background: #ef4444;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+#taskList button:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
